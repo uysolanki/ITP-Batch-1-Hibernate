@@ -25,11 +25,17 @@ public class App
     	Transaction tranx=session1.beginTransaction();
     	
     	Employee e1=new Employee();
-    	e1.setEname("Ben");
-    	e1.setEno(2);
+    	e1.setEname("Alice");
+    	e1.setEno(1);
     	e1.setSalary(800);
     	
+    	Employee e2=new Employee();
+    	e2.setEname("Chris");
+    	e2.setEno(3);
+    	e2.setSalary(100);
+    	
     	session1.save(e1);
+    	session1.save(e2);
     	tranx.commit();
     	
     	session1.close();
