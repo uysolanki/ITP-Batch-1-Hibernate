@@ -1,15 +1,32 @@
 package com.itp.ITPFirstHibernate.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
+@Table(name="myemployee")
 public class Employee {
 
 	@Id
+	@GeneratedValue(strategy =GenerationType.SEQUENCE,generator = "amey_seq")
+	@SequenceGenerator(name = "amey_seq",sequenceName = "employee_sequence",initialValue = 101, allocationSize = 1)
 	private int eno;
+	
+
+	@Column(name="empname")
 	private String ename;
 	private double salary;
+	
+	@Transient
+	int temp;
+	
+	Address address;
 	
 	public Employee() {}
 	public Employee(int eno, String ename, double salary) {
@@ -39,6 +56,12 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [eno=" + eno + ", ename=" + ename + ", salary=" + salary + "]";
+	}
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 	
 	
